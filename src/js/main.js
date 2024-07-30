@@ -27,7 +27,7 @@ class Main {
     // this.controls = null;
 
     this.instancedMesh = null;
-    this.instanceCount = 20;
+    this.instanceCount = 21;
     this.instanceDummy = new THREE.Object3D();
 
     this.lenis = new Lenis({
@@ -159,33 +159,6 @@ class Main {
   }
 
   _setAnimation() {
-    // const tl1 = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '#section02',
-    //     start: 'top bottom',
-    //     toggleActions: 'play none none reverse',
-    //     // markers: true,
-    //     onEnter: ()=> {
-    //       console.log('on enter');
-    //       gsap.to(this.animationParams.scale, {
-    //         x: 0.5,
-    //         y: 1.4,
-    //         duration: 0.9,
-    //         ease: "power3.inOut"
-    //       })
-    //     },
-    //     onLeaveBack: ()=> {
-    //       console.log('on leaveback');
-    //       gsap.to(this.animationParams.scale, {
-    //         x: 1.0,
-    //         y: 1.0,
-    //         duration: 0.9,
-    //         ease: "power3.inOut"
-    //       })
-    //     }
-    //   }
-    // });
-
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: '#section02',
@@ -217,12 +190,18 @@ class Main {
       }
     });
     tl2.to(this.animationParams.position, {
-      x: 400,
-      y: 100,
+      x: 50,
+      y: 50,
     })
     .to(this.animationParams.scale, {
-      x: 0.6,
-      y: 0.4,
+      x: 1.0,
+      y: 0.8,
+    }, '<')
+    // .to(this.uniforms.uWave, {
+    //   value: 1000.0,
+    // }, '<')
+    .to(this.uniforms.uDelay, {
+      value: 0.1,
     }, '<')
 
   }
@@ -270,7 +249,11 @@ class Main {
       );
 
       // this.instanceDummy.scale.set(Math.sin(elapsedTime + index * 0.05), Math.cos(elapsedTime + index * 0.03), 1.0);
-      this.instanceDummy.scale.set(this.animationParams.scale.x, this.animationParams.scale.y, this.animationParams.scale.z);
+      this.instanceDummy.scale.set(
+        this.animationParams.scale.x,
+        this.animationParams.scale.y,
+        this.animationParams.scale.z
+      );
 
 
       // this.instanceDummy.position.set(
